@@ -52,7 +52,71 @@ console.log(y.split(', '));
 ARRAYS:
 - can have mutiple data types in array and dynamic size (no need to set array size at initialisation).
 - also note JS is not statically typed (TypeScript is statically typed).
+- can add onto the end of the array e.g. in an array with 3 elements, u can add the 4th and so on elements with .push(value).
+- cannot directly reassign an existing array, can manipulate it though.
 */
 const numbers = new Array(1,2,3,4,5); // array using a constructor.
 const fruits = ['apples', 'oranges', 10, true]; // array starting with [] brackets.
-console.log(fruits[1]);
+
+console.log(fruits);
+console.log(fruits[1]); // output the 2nd element in the array.
+fruits.push("mangoes"); // add the value "mangoes" to the end of the array.
+console.log(fruits);
+fruits.unshift("strawberries"); // add the value "strawberries" to the start of the array.
+console.log(fruits);
+fruits.pop(); // remove and return last element of the array.
+console.log(fruits);
+// use the function 'isArray' to check if the item passed in is an array or not. returns a boolean value.
+console.log(Array.isArray(fruits)); // returns true.
+console.log(Array.isArray("hello")); // returns false
+console.log(fruits.indexOf('oranges')); // returns the index of the value passed in.
+
+/*
+OBJECT LITERALS
+declaring an object, with key value pairs, delimited by commas.
+can have embedded object literals, such as address as below
+*/
+const person = {
+    firstname: 'John',
+    lastName: 'Smith',
+    age: 30,
+    hobbies: ['sports', 'movies'],
+    address: {
+        street: '50 Pine Street',
+        city: 'London',
+        postcode: 'WB 321'
+    }
+};
+
+console.log(person);
+// access properties from an object literal: e.g. John Smith movies London
+console.log(person.firstname, person.lastName, person.hobbies[1], person.address.city);
+/* DESTRUCTURING: 
+- unpack object/ iterable(e.g. arrays) properties into variables
+- does not change the original object
+- can use it to set default values (e.g. country = "UK" below)
+- used to extract multiple values from an obj/iterable in one go.*/
+const { lastName, firstname, address: {city}, country = "UK" } = person;
+console.log(city, country);
+
+person.email = "john@gmail.com"; // add properties to object literal directly
+
+// create an array of objects. e.g. an array of to-do tasks.
+const todos = [
+    {
+        id: 1,
+        text: "Throw rubbish",
+        isCompleted: true
+    },
+    {
+        id: 2,
+        text: "Doctors Appt",
+        isCompleted: true
+    },
+    {
+        id: 3,
+        text: "Driving Lesson",
+        isCompleted: true
+    }
+]
+console.log(todos[1].text); // Output second task.
