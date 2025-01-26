@@ -258,3 +258,21 @@ const addNums3 = (num1 = 1) => num1 + 5;
 console.log(addNums3(5));
 
 todos.forEach((todo)=>console.log(todo));
+
+/*
+OBJECT ORIENTED PROGRAMMING
+1 - CONSTRUCTOR FUNCTIONS AND PROTOTYPES
+2 - ES6 CLASSES
+*/
+// 1
+
+// constructor function
+function Person (firstName, lastName, dob){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dob = dob;
+}
+// instantiate object
+const person1 = new Person ('John', 'Doe', '4-3-1990');
+const person2 = new Person ('Marie', 'Anne', '4-3-1980');
+console.log(person1.lastName);
