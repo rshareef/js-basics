@@ -270,9 +270,39 @@ OBJECT ORIENTED PROGRAMMING
 function Person (firstName, lastName, dob){
     this.firstName = firstName;
     this.lastName = lastName;
-    this.dob = dob;
+    this.dob = new Date(dob); // uses date constructor to turn string date into a date object
+    // add methods to this object - this is not the best way to do it, use prototypes.
+    this.getBirthYear = function(){
+        return this.dob.getFullYear();
+    }
+}
+
+// use prototypes when you dont want to attatch a function to every object created by default
+Person.prototype.getFullName = function(){
+    return `${this.firstName} ${this.lastName}`
 }
 // instantiate object
 const person1 = new Person ('John', 'Doe', '4-3-1990');
 const person2 = new Person ('Marie', 'Anne', '4-3-1980');
-console.log(person1.lastName);
+console.log(person1.dob.getFullYear()); // and because dob is a date object we can apply date functions to it.
+console.log(person1);
+console.log(person1.getFullName());
+
+// same as above but using ES6 classes - tidier way to create classes.
+class PersonX {
+    constructor(firstName, lastName, dob){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = new Date(dob);
+    }
+    getBirthYear(){
+        return this.dob.getFullYear();
+    }
+    getFullName(){
+        return `${this.firstName} ${this.lastName}`
+    }
+}
+const person3 = new PersonX ('John', 'Doe', '4-3-1990');
+const person4 = new PersonX ('Marie', 'Anne', '4-3-1980');
+console.log(person4.getBirthYear() , person4.getFullName());
+console.log(person3);
