@@ -188,3 +188,48 @@ const todoCompleted = todos.filter(function(todo){
 })
 console.log(todoCompleted);
 
+/*
+CONDITIONALS:
+== double equals: performs type conversion (loose comparison). i.e. ('10' == 10) returns true
+=== triple equals: NO type conversion occurs. if the types differ, returns false.
+Object.is(): determines if two values are equal (i.e. value is same or for reference types, that they point to the the same reference).
+- for == and ===, (-0 == +0) returns true and null values are NOT equal.
+- for Object.is(), (-0 == +0) returns false and null values are equal.
+
+&& AND
+|| OR
+
+*/
+const a = 20;
+if(a === 10) {
+    console.log('a is 10');
+}else if (a>10){
+    console.log('a is greater than 10');
+}else{
+    console.log('a is less than 10');
+};
+
+
+console.log(Object.is('foo', 'foo')); // Output: true
+console.log(Object.is({}, {})); // Output: false (different object references)
+
+console.log(Object.is(NaN, NaN)); // Output: true
+console.log(Object.is(+0, -0)); // Output: false
+
+// TERNARY OPERATOR = condition? if true: if false
+const j=10;
+const colour = j>10 ? 'red':'blue';
+console.log(colour); // Outputs blue because ternary statement returns false.
+
+// SWITCH STATEMENT
+switch(colour){
+    case 'red':
+        console.log('colour is red');
+        break;
+    case 'blue':
+        console.log('colour is blue');
+        break;
+    default:
+        console.log('colour is not red or blue');
+        break;
+}
