@@ -193,8 +193,8 @@ CONDITIONALS:
 == double equals: performs type conversion (loose comparison). i.e. ('10' == 10) returns true
 === triple equals: NO type conversion occurs. if the types differ, returns false.
 Object.is(): determines if two values are equal (i.e. value is same or for reference types, that they point to the the same reference).
-- for == and ===, (-0 == +0) returns true and null values are NOT equal.
-- for Object.is(), (-0 == +0) returns false and null values are equal.
+- for == and ===, (-0 == +0) returns true and non-number(NaN) values are NOT equal.
+- for Object.is(), (-0 == +0) returns false and non-number(NaN) values are equal.
 
 && AND
 || OR
@@ -233,3 +233,28 @@ switch(colour){
         console.log('colour is not red or blue');
         break;
 }
+
+/*
+FUNCTIONS
+*/
+
+// num1 has a default value that can be overridden by passing an argument for that parameter on invocation.
+function addNums(num2, num1 = 1){
+    return (num1 + num2)
+}
+console.log(addNums(5));
+
+// ARROW FUNCTIONS: assign to a constant variable and add an arrow
+// addNums1 and 2 do the same thing, addNums 3 is similar but with 1 variable only and outputs different value.
+const addNums1 = (num2, num1 = 1)=>{
+    return (num1 + num2)
+}
+console.log(addNums1(5));
+
+const addNums2 = (num2, num1 = 1)=> (num1 + num2);
+console.log(addNums2(5));
+
+const addNums3 = (num1 = 1) => num1 + 5;
+console.log(addNums3(5));
+
+todos.forEach((todo)=>console.log(todo));
