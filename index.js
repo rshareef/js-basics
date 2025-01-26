@@ -91,11 +91,13 @@ const person = {
 console.log(person);
 // access properties from an object literal: e.g. John Smith movies London
 console.log(person.firstname, person.lastName, person.hobbies[1], person.address.city);
-/* DESTRUCTURING: 
+/*
+DESTRUCTURING: 
 - unpack object/ iterable(e.g. arrays) properties into variables
 - does not change the original object
 - can use it to set default values (e.g. country = "UK" below)
-- used to extract multiple values from an obj/iterable in one go.*/
+- used to extract multiple values from an obj/iterable in one go.
+*/
 const { lastName, firstname, address: {city}, country = "UK" } = person;
 console.log(city, country);
 
@@ -111,12 +113,78 @@ const todos = [
     {
         id: 2,
         text: "Doctors Appt",
-        isCompleted: true
+        isCompleted: false
     },
     {
         id: 3,
         text: "Driving Lesson",
         isCompleted: true
     }
-]
+];
 console.log(todos[1].text); // Output second task.
+
+/*
+JSON
+- data format, often used in full-stack development when using APIs and sending data to a server.
+*/
+const todoJSON =  JSON.stringify(todos); //convert js to a JSON string.
+console.log(todoJSON);
+
+/* NOTE: const and let are both block scoped,
+with let, you can change the value of it after it has been initially assigned
+with const, its a constant value which cannot be reassigned (unless within an object/iterable) unless redefined */
+
+/*
+LOOPS: use 'let' instead of const as its mutable.
+*/
+
+// for
+for(let i=0; i<10; i++){
+    console.log(`For loop iteration: ${i}`);
+};
+
+// while
+let i=0;
+while (i<10){
+    console.log(`While loop iteration: ${i}`);
+    i++;
+};
+
+// for-of
+for(let todo of todos){
+    console.log(todo.text);
+};
+
+/* high order array methods: best way to iterate through arrays.
+for-each: loops through as normal
+map: create a new array from array
+filter: create a new array based on a condition
+***these methods take a FUNCTION in as a parameter
+CALLBACK FUNCTION = function passed as an argument to another function (allows function to call another function). callback function runs after other function finished.
+"The callback function is helpful when you have to wait for a result that takes time. For example, the data coming from a server because it takes time for data to arrive."
+This is because it will wait for the first function to execute before running the second one.
+*/
+// loops through each text value in todo array.
+todos.forEach(function(todo){
+    console.log(todo.text);
+});
+
+// return an array of only the text values.
+const todoText = todos.map(function(todo){
+    return todo.text;
+});
+console.log(todoText);
+
+// Return a new array with the square root of all element values:
+const nums = [4, 9, 16, 25];
+const newArr = nums.map(Math.sqrt);
+console.log(newArr);
+
+// Return array of completed tasks only
+const todoCompleted = todos.filter(function(todo){
+    return todo.isCompleted === true; // returns a boolean value
+}).map(function(todo){
+    return todo.text; // just return the text part of the todo object literal.
+})
+console.log(todoCompleted);
+
